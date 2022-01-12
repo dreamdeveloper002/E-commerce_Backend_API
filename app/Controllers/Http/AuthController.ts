@@ -86,6 +86,7 @@ export default class AuthController {
         token,
       })
     } catch (error) {
+      console.log(error)
       return handlerResponse(response, 500, {
         status: 'False',
         message: error.message,
