@@ -47,4 +47,4 @@ You can check the Node.js and npm versions by running the following commands.
 
 ## Postman documentation
 
-https://documenter.getpostman.com/view/11998048/UUxwBUSq
+https://documenter.getpostman.com/view/11998048/UVXhpbdp
