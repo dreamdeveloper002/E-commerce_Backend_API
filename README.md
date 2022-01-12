@@ -45,6 +45,30 @@ You can check the Node.js and npm versions by running the following commands.
 
 `node ace migration:run`
 
+## Endpoints
+
+| Method      | Description    | Endpoints    | Role   | 
+| :------------- | :----------: | -----------: | -----------: |
+|  POST | Create user   | /api/v1/auth/signup    | *   |
+| POST   | signin user | /api/v1/auth/login | * |
+| POST   | logout user | /api/v1/auth/logout | * |
+| POST   | forgot password | /api/v1/auth/forgotpassword | * |
+| PUT   | reset password | /api/v1/auth/resetpassword/:token | * |
+| PUT   | update password | /api/v1/auth/updatepassword/:id | * |
+| GET   | verify email | /api/v1/auth/verify/email | * |
+| POST   | create category | /api/v1/category/create | admin |
+| GET   | get category | /api/v1/category/:id | * |
+| PUT  | update category | /api/v1/category/update/:id | admin |
+| DELETE | delete category | /api/v1/category/delete/:id | admin |
+| POST | create sub category | /api/v1/sub_category/create/:categoryId | admin |
+| PUT | update sub category | /api/v1/sub_category/update/:id | admin |
+| GET   | get sub category | /api/v1/sub_category/:id | * |
+| DELETE | delete sub category | /api/v1/sub_category/delete/:id | admin |
+| POST   | create product | /api/v1/product/create/:categoryId/:subCategoryId | admin |
+| GET   | get product | /api/v1/product/:id | * |
+| PUT  | update category | /api/v1/product/update/:id | admin |
+| DELETE | delete product | /api/v1/product/delete/:id | admin |
+
 ## Postman documentation
 
 https://documenter.getpostman.com/view/11998048/UVXhpbdp
