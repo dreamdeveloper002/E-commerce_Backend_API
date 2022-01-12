@@ -10,7 +10,7 @@ export default class ProductSubCategoriesController {
     const req = await request.validate({
       schema: schema.create({
         name: schema.string({}, [rules.maxLength(225), rules.minLength(2)]),
-        status: schema.string({}, [rules.maxLength(225), rules.minLength(2)]),
+        status: schema.string({}),
       }),
       messages: {
         'name.required': 'Category name is required',

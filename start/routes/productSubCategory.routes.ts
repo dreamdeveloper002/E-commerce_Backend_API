@@ -5,6 +5,6 @@ Route.group(() => {
     'auth'
   )
   Route.get('/:id', 'ProductSubCategoriesController.getSubCategory').middleware('auth')
-  Route.put('/:id', 'ProductSubCategoriesController.updateSubCategory').middleware('auth')
-  Route.delete('/:id', 'ProductSubCategoriesController.deleteSubCategory').middleware('auth')
+  Route.put('update/:id', 'ProductSubCategoriesController.updateSubCategory').middleware('auth')
+  Route.delete('delete/:id', 'ProductSubCategoriesController.deleteSubCategory').middleware('auth')
 }).prefix('/api/v1/sub_category')
