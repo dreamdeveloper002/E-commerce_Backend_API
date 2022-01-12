@@ -26,7 +26,7 @@ export default class ProductsController {
     })
 
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can create product category')
@@ -68,7 +68,7 @@ export default class ProductsController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -91,14 +91,14 @@ export default class ProductsController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
 
   public async updateProduct({ request, response, auth, params }: HttpContextContract) {
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can update product category')
@@ -136,14 +136,14 @@ export default class ProductsController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
 
   public async deleteProduct({ params, response, auth }: HttpContextContract) {
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can delete product')
@@ -175,7 +175,7 @@ export default class ProductsController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }

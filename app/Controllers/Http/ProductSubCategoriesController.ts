@@ -20,7 +20,7 @@ export default class ProductSubCategoriesController {
 
     try {
       const productCategoryId = params.categoryId
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can create product category')
@@ -50,7 +50,7 @@ export default class ProductSubCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -73,14 +73,14 @@ export default class ProductSubCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
 
   public async updateSubCategory({ request, response, auth, params }: HttpContextContract) {
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can update product category')
@@ -109,14 +109,14 @@ export default class ProductSubCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
 
   public async deleteSubCategory({ params, response, auth }: HttpContextContract) {
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can create product category')
@@ -140,7 +140,7 @@ export default class ProductSubCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }

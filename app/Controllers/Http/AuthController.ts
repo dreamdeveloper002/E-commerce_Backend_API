@@ -89,7 +89,7 @@ export default class AuthController {
       console.log(error)
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -125,7 +125,7 @@ export default class AuthController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -133,8 +133,8 @@ export default class AuthController {
   public async login({ request, response, auth }: HttpContextContract) {
     const req = await request.validate({
       schema: schema.create({
-        email: schema.string({}, [rules.email()]),
-        password: schema.string({}, [rules.minLength(8), rules.regex(/^\S+@\S+\.\S+$/)]),
+        email: schema.string({}, [rules.email(), rules.regex(/^\S+@\S+\.\S+$/)]),
+        password: schema.string({}, [rules.minLength(8)]),
       }),
 
       messages: {
@@ -157,9 +157,10 @@ export default class AuthController {
         data: token,
       })
     } catch (error) {
+      console.log(error)
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -174,7 +175,7 @@ export default class AuthController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -229,7 +230,7 @@ export default class AuthController {
 
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -297,7 +298,7 @@ export default class AuthController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -345,7 +346,7 @@ export default class AuthController {
       console.log(error)
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }

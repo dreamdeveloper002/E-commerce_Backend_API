@@ -9,7 +9,7 @@ export default class ProductCategoriesController {
     const req = await request.validate({
       schema: schema.create({
         name: schema.string({}, [rules.maxLength(225), rules.minLength(2)]),
-        status: schema.string({}, [rules.maxLength(225), rules.minLength(2)]),
+        status: schema.string({}),
       }),
       messages: {
         'name.required': 'Category name is required',
@@ -18,7 +18,7 @@ export default class ProductCategoriesController {
     })
 
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can create product category')
@@ -36,7 +36,7 @@ export default class ProductCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
@@ -59,14 +59,14 @@ export default class ProductCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
 
   public async updateCategory({ request, response, auth, params }: HttpContextContract) {
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can update product category')
@@ -95,14 +95,14 @@ export default class ProductCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
 
   public async deleteCategory({ params, response, auth }: HttpContextContract) {
     try {
-      const isUserAdmin = auth.user!.type === 'Admin'
+      const isUserAdmin = auth.user!.type === 'ADMIN'
 
       if (!isUserAdmin) {
         Logger.info('only admin user can create product category')
@@ -126,7 +126,7 @@ export default class ProductCategoriesController {
     } catch (error) {
       return handlerResponse(response, 500, {
         status: 'False',
-        message: error.message,
+        data: error,
       })
     }
   }
